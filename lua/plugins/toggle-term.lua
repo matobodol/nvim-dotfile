@@ -1,17 +1,17 @@
 -- Terminal
 local Plugin = {
-    "akinsho/toggleterm.nvim",
-    config = true,
-    branch = "main",
+  "akinsho/toggleterm.nvim",
+  config = true,
+  branch = "main",
 }
 
-function Plugin.config()
-  require("toggleterm").setup({
-	active = true,
+Plugin.config = {
+
+    active = true,
     on_config_done = nil,
     -- size can be a number or function which is passed the current terminal
     --~ size = 60,
-    open_mapping = [[<M-4>]],
+    open_mapping = [[<M-i>]],
     hide_numbers = true, -- hide the number column in toggleterm buffers
     shade_filetypes = {},
     shade_terminals = true,
@@ -31,21 +31,28 @@ function Plugin.config()
       -- not natively supported but implemented in this plugin.
       -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
       border = "curved",
-      -- width = <value>,
-      -- height = <value>,
+      --width = 50,
+      --height = 25,
       winblend = 0,
       highlights = {
-        border = "Normal",
+        border = "normal",
         background = "Normal",
       },
     },
-  })
-end
+}
 
 function Plugin.init()
-	vim.keymap.set({'n', 'i', 'x'}, '<M-1>', '<cmd>ToggleTerm open_mapping=[[<M-1>]] size=60 direction=vertical<cr>')
-	vim.keymap.set({'n', 'i', 'x'}, '<M-2>', '<cmd>ToggleTerm open_mapping=[[<M-2>]] size=10 direction=horizontal<cr>')
-	vim.keymap.set({'n', 'i', 'x'}, '<M-3>', '<cmd>ToggleTerm open_mapping=[[<M-3>]] size=20 direction=float<cr>')
+  vim.cmd([[
+    augroup ToggleTerm
+      autocmd!
+      autocmd TermEnter term://* tnoremap <buffer> <Esc> <C-\><C-n>
+    augroup END
+  ]])
+
+  local map = vim.keymap.set
+  map({'n', 'i', 'x'}, '<M-1>', '<cmd>ToggleTerm open_mapping=[[<M-1>]] size=60 direction=vertical<cr>')
+  map({'n', 'i', 'x'}, '<M-2>', '<cmd>ToggleTerm open_mapping=[[<M-2>]] size=10 direction=horizontal<cr>')
+  map({'n', 'i', 'x'}, '<M-3>', '<cmd>ToggleTerm open_mapping=[[<M-3>]] size=20 direction=float<cr>')
 end
 
 return Plugin

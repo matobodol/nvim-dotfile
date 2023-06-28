@@ -1,12 +1,12 @@
 local Plugin = {'lukas-reineke/indent-blankline.nvim'}
 
 Plugin.opts = {
-vim.cmd [[highlight IndentBlanklineIndent1 guifg=#4B5263 gui=nocombine]],
-vim.cmd [[highlight IndentBlanklineIndent2 guifg=#4B5263 gui=nocombine]],
-vim.cmd [[highlight IndentBlanklineIndent3 guifg=#4B5263 gui=nocombine]],
-vim.cmd [[highlight IndentBlanklineIndent4 guifg=#4B5263 gui=nocombine]],
-vim.cmd [[highlight IndentBlanklineIndent5 guifg=#4B5263 gui=nocombine]],
-vim.cmd [[highlight IndentBlanklineIndent6 guifg=#4B5263 gui=nocombine]],
+  vim.cmd [[highlight IndentBlanklineIndent1 guifg=#4B5263 gui=nocombine]],
+  vim.cmd [[highlight IndentBlanklineIndent2 guifg=#4B5263 gui=nocombine]],
+  vim.cmd [[highlight IndentBlanklineIndent3 guifg=#4B5263 gui=nocombine]],
+  vim.cmd [[highlight IndentBlanklineIndent4 guifg=#4B5263 gui=nocombine]],
+  vim.cmd [[highlight IndentBlanklineIndent5 guifg=#4B5263 gui=nocombine]],
+  vim.cmd [[highlight IndentBlanklineIndent6 guifg=#4B5263 gui=nocombine]],
   char_highlight_list = {
     "IndentBlanklineIndent1",
     "IndentBlanklineIndent2",
@@ -23,7 +23,7 @@ vim.cmd [[highlight IndentBlanklineIndent6 guifg=#4B5263 gui=nocombine]],
   use_treesitter = false,
   show_current_context = true,
 
-    vim.keymap.set('n', '<leader>ui', '<cmd>IndentBlanklineToggle<cr>')
+  vim.keymap.set('n', '<leader>ui', '<cmd>IndentBlanklineToggle<cr>')
 }
 
 return Plugin

@@ -1,23 +1,25 @@
 local Plugin = {'neovim/nvim-lspconfig'}             -- Required
-  Plugin.dependencies = {
-    -- LSP Support
-    {                                      -- Optional
-      'williamboman/mason.nvim',
-      build = function()
-        pcall(vim.cmd, 'MasonUpdate')
-      end,
-    },
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},     -- Required
-    {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    {'L3MON4D3/LuaSnip'},     -- Required
-  }
+Plugin.dependencies = {
+  -- LSP Support
+  {                                      -- Optional
+    'williamboman/mason.nvim',
+    build = function()
+      pcall(vim.cmd, 'MasonUpdate')
+    end,
+  },
+  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+  -- Autocompletion
+  {'hrsh7th/nvim-cmp'},     -- Required
+  {'hrsh7th/cmp-nvim-lsp'}, -- Required
+  {'L3MON4D3/LuaSnip'},     -- Required
+}
 
 function Plugin.config()
 
   -- Mason setup
-  require("mason").setup()
+  require("mason").setup({
+    --PATH = "prepend", -- "skip" seems to cause the spawning error
+})
   require("mason-lspconfig").setup {
     --ensure_installed = { "rust_analyzer" },
     automatic_installation = false,
@@ -35,8 +37,8 @@ function Plugin.config()
   )
 
   -- CALL CLIENT BAHAS
---  require'lspconfig'.rust_analyzer.setup({})
-    require'lspconfig'.lua_ls.setup {}
+  --  require'lspconfig'.rust_analyzer.setup({})
+  require'lspconfig'.lua_ls.setup {}
 
   vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
@@ -85,13 +87,6 @@ function Plugin.config()
     end
   })
 
-  vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-  local cmp = require('cmp')
-  local luasnip = require('luasnip')
-  
-  local select_opts = {behavior = cmp.SelectBehavior.Select}
-    cmp.setup({})
-
   local sign = function(opts)
     vim.fn.sign_define(opts.name, {
       texthl = opts.name,
@@ -112,17 +107,17 @@ function Plugin.config()
     underline = true,
     severity_sort = true,
     float = {
-        border = 'rounded',
-        source = 'always',
-        header = '',
-        prefix = '',
+      border = 'rounded',
+      source = 'always',
+      header = '',
+      prefix = '',
     },
   })
 
-  vim.cmd([[
-    set signcolumn=yes
-    autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
-  ]])
+  --vim.cmd([[
+  --set signcolumn=yes
+  --autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+  --]])
 
 end
 

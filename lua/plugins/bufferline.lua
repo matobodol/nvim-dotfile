@@ -21,9 +21,9 @@ Plugin.config = {
 }
 
 function Plugin.init()
-	vim.keymap.set({'n',}, '<leader>bb', '<cmd>BufferLineCyclePrev<cr>')
-	vim.keymap.set({'n',}, '<leader>bn', '<cmd>BufferLineCycleNext<cr>')
-	vim.keymap.set({'n',}, '<leader>c', '<cmd>bd<cr>')
+  vim.keymap.set({'n',}, '<leader>bb', '<cmd>BufferLineCyclePrev<cr>')
+  vim.keymap.set({'n',}, '<leader>bn', '<cmd>BufferLineCycleNext<cr>')
+  vim.keymap.set({'n',}, '<leader>c', '<cmd>bd<cr>')
 end
 
 return Plugin

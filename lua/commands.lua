@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
   group = group,
   callback = function()
     vim.cmd('setlocal nonumber')
-		--~vim.api.nvim_feedkeys('i', 'n', false)
+		vim.api.nvim_feedkeys('i', 'n', false)
   end,
 })
 

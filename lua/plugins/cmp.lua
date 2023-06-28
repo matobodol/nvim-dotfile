@@ -45,17 +45,17 @@ function Plugin.config()
     sources = {
       {name = 'path'},
       {name = 'nvim_lsp', keyword_length = 1},
-      {name = 'buffer', keyword_length = 1},
-      {name = 'luasnip', keyword_length = 1},
+      {name = 'buffer', keyword_length = 3},
+      {name = 'luasnip', keyword_length = 2},
     },
     window = {
       documentation = cmp.config.window.bordered(),
-  	  completion = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
       --~ documentation = {
-        --~ border = 'rounded',
-        --~ max_height = 15,
-        --~ max_width = 50,
-        --~ zindex = 50,
+      --~ border = 'rounded',
+      --~ max_height = 15,
+      --~ max_width = 50,
+      --~ zindex = 50,
       --~ }
     },
     formatting = {
