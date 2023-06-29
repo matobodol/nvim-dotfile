@@ -9,7 +9,10 @@
 local Plugin = {
   'goolord/alpha-nvim',
   event = "VimEnter",
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+    'nvim-tree/nvim-tree.lua'
+  },
 }
 
 function Plugin.init()
@@ -32,23 +35,24 @@ function Plugin.init()
   end
   --
   -- Banner
-  local banner = {
+  local neodol = {
     "                                                    ",
-    " ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-    " ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-    " ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-    " ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-    " ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-    " ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+    "  ███╗  ██╗██████╗ █████╗ ███████╗  █████╗ ██╗      ",
+    "  ████╗ ██║██╔═══╝██╔══██╗ ██╔══██╗██╔══██╗██║      ",
+    "  ██╔██╗██║████╗  ██║  ██║ ██║  ██║██║  ██║██║      ",
+    "  ██║╚████║██╔═╝  ██║  ██║ ██║  ██║██║  ██║██║      ",
+    "  ██║ ╚███║██████╗╚█████╔╝███████╔╝╚█████╔╝██████╗  ",
+    "  ╚═╝  ╚══╝╚═════╝ ╚════╝ ╚══════╝  ╚════╝ ╚═════╝  ",
     "                                                    ",
   }
 
-  dashboard.section.header.val = banner
+  dashboard.section.header.val = neodol
 
   -- Menu
   dashboard.section.buttons.val = {
-    dashboard.button('e', '  New file', ':ene <BAR> startinsert<CR>'),
+    dashboard.button('n', '  New file', ':ene <BAR> startinsert<CR>'),
     dashboard.button('h', "  History"   , ":Telescope oldfiles<CR>"),
+    dashboard.button('e', "  Nvim-tree", ":NvimTreeToggle<CR>"),
     dashboard.button('f', "  Find file", ":cd $HOME | Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>"),
     dashboard.button('s', '  Settings', ':e $MYVIMRC<CR>'),
     dashboard.button('u', '  Update plugins', ':Lazy update<CR>'),

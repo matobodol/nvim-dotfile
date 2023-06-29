@@ -1,5 +1,6 @@
 -- [[ LAZY PLUGINS ]]
 
+vim.o.packpath = vim.o.packpath .. ',~/.config/nvim/lazy/'
 local lazy = {}
 
 function lazy.install(path)

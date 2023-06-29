@@ -7,6 +7,7 @@ Plugin.opts = {
   vim.cmd [[highlight IndentBlanklineIndent4 guifg=#4B5263 gui=nocombine]],
   vim.cmd [[highlight IndentBlanklineIndent5 guifg=#4B5263 gui=nocombine]],
   vim.cmd [[highlight IndentBlanklineIndent6 guifg=#4B5263 gui=nocombine]],
+
   char_highlight_list = {
     "IndentBlanklineIndent1",
     "IndentBlanklineIndent2",
