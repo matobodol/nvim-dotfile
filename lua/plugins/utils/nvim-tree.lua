@@ -1,7 +1,7 @@
 local Plugin = {"nvim-tree/nvim-tree.lua",}
 Plugin.dependencies = {"nvim-tree/nvim-web-devicons"}
 
-Plugin.config = {
+Plugin.opts = {
   --root_dirs = {},
   auto_reload_on_write = false,
   disable_netrw = false,

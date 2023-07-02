@@ -43,7 +43,7 @@ lazy.opts = {
 
 lazy.setup({
   -- Load them from the lua/config folder
-  {import = 'plugins'},
-  
+  --{import = 'plugins'},
+  require('plugins.init-lazy'),
 })
 

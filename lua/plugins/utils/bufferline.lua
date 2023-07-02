@@ -1,7 +1,7 @@
 local Plugin = {'akinsho/bufferline.nvim'}
 Plugin.dependencies = {'nvim-tree/nvim-web-devicons'}
 
-Plugin.config = {
+Plugin.opts = {
   options = {
     mode = 'buffers',
     offsets = {

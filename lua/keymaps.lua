@@ -16,6 +16,7 @@ map({'n', 'x', 'o'}, '<leader>h', '^')
 map({'n', 'x', 'o'}, '<leader>l', 'g_')
 --~ -- seleck all text
 map('n', '<leader>a', ':keepjumps normal! ggVG<cr>')
+map('n', '<leader>t', 'ggVG=<cr>')
 
 --=== NEOVIM ===--
 

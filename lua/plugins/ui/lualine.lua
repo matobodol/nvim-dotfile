@@ -1,7 +1,7 @@
 local Plugin = {'nvim-lualine/lualine.nvim'}
 Plugin.dependencies = {'nvim-tree/nvim-web-devicons'}
 
-Plugin.config = {
+Plugin.opts = {
   options = {
     icons_enabled = true,
     theme = 'auto',

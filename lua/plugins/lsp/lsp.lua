@@ -17,14 +17,8 @@ Plugin.dependencies = {
 function Plugin.config()
 
   -- Mason setup
-  require("mason").setup({
-    --PATH = "prepend", -- "skip" seems to cause the spawning error
-})
-  require("mason-lspconfig").setup {
-    --ensure_installed = { "rust_analyzer" },
-    automatic_installation = false,
-    handlers = nil,
-  }
+  require("mason").setup({})
+  require("mason-lspconfig").setup {}
 
   -- LSP SETUP
   local lspconfig = require('lspconfig')
@@ -37,9 +31,14 @@ function Plugin.config()
   )
 
   -- CALL CLIENT BAHAS
-  --  require'lspconfig'.rust_analyzer.setup({})
+  require'lspconfig'.rust_analyzer.setup({})
   require'lspconfig'.lua_ls.setup {}
-
+  -- bashls
+  require 'lspconfig'.bashls.setup {
+    --on_attach = on_attach,
+    --capabilities = capabilities,
+    filetypes = { 'zsh', 'bash', 'sh' },
+  }
   vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function()
@@ -70,20 +69,20 @@ function Plugin.config()
       bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 
       -- Renames all references to the symbol under the cursor
-      bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+      bufmap('n', 'glr', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
       -- Selects a code action available at the current cursor position
-      bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-      bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+      bufmap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+      --bufmap('x', 'gq', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
 
       -- Show diagnostics in a floating window
       bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
       -- Move to the previous diagnostic
-      bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+      bufmap('n', 'g,', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 
       -- Move to the next diagnostic
-      bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+      bufmap('n', 'g.', '<cmd>lua vim.diagnostic.goto_next()<cr>')
     end
   })
 

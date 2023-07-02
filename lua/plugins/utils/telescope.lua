@@ -37,7 +37,7 @@ function Plugin.config()
       path_display = { "shorten" },
       mappings = {
         i = {
-          ["<esc>"] = actions.close,
+          --["<esc>"] = actions.close,
           ["<M-n>"] = actions.cycle_history_next,
           ["<M-p>"] = actions.cycle_history_prev,
           ["<M-j>"] = actions.move_selection_next,
@@ -74,7 +74,7 @@ function Plugin.config()
   map('n', '<leader>ft', builtin.treesitter, opts)
   map('n', '<leader>fc', builtin.commands, opts)
   map('n', '<leader>fd', builtin.colorscheme, opts)
-  map('n', '<leader>fi', builtin.lsp_implementations, opts)
+  map('n', '<leader>fi', builtin.lsp_document_symbols, opts)
   map('n', '<leader>fs', builtin.grep_string, opts)
   map('n', '<leader>fk', builtin.keymaps, opts)
 

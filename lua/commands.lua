@@ -58,4 +58,12 @@ end
 
 vim.api.nvim_command('command! -nargs=0 Cm lua compile_and_run()')
 
-
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'sh',
+  callback = function()
+    vim.lsp.start({
+      name = 'bash_ls',
+      cmd = { 'bash-language-server', 'start' },
+    })
+  end,
+})

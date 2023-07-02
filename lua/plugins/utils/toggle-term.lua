@@ -5,7 +5,7 @@ local Plugin = {
   branch = "main",
 }
 
-Plugin.config = {
+Plugin.opts = {
 
     active = true,
     on_config_done = nil,
@@ -42,12 +42,6 @@ Plugin.config = {
 }
 
 function Plugin.init()
-  vim.cmd([[
-    augroup ToggleTerm
-      autocmd!
-      autocmd TermEnter term://* tnoremap <buffer> <Esc> <C-\><C-n>
-    augroup END
-  ]])
 
   local map = vim.keymap.set
   map({'n', 'i', 'x'}, '<M-1>', '<cmd>ToggleTerm open_mapping=[[<M-1>]] size=60 direction=vertical<cr>')
