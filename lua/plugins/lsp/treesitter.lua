@@ -1,14 +1,45 @@
 local Plugin = {
   -- Treesitter
   "nvim-treesitter/nvim-treesitter",
+  event = "VimEnter",
 }
 
 Plugin.dependencies = {
   {'JoosepAlviste/nvim-ts-context-commentstring'},
+  { "nvim-treesitter/nvim-treesitter" },
+
+  -- add/delete symbols pairs
+  --[[
+  --    Old text                    Command         New text
+  --------------------------------------------------------------------------------
+      surr*ound_words             ysiw)           (surround_words)
+      *make strings               ys$"            "make strings"
+      [delete ar*ound me!]        ds]             delete around me!
+      remove <b>HTML t*ags</b>    dst             remove HTML tags
+      'change quot*es'            cs'"            "change quotes"
+      <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
+      delete(functi*on calls)     dsf             function calls
+  --]]
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({})
+    end
+  },
+
+  -- Comment/Uncomment
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  },
 }
 
 Plugin.opts = {
-  ensure_installed = { "rust", "cpp", "comment", "markdown_inline", "regex" },
+  ensure_installed = {"lua", "rust", "cpp"},
 
   -- List of parsers to ignore installing (for "all")
   --~ ignore_install = {},

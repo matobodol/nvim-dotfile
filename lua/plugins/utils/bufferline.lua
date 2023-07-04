@@ -1,4 +1,4 @@
-local Plugin = {'akinsho/bufferline.nvim'}
+local Plugin = {'akinsho/bufferline.nvim', event = "BufRead"}
 Plugin.dependencies = {'nvim-tree/nvim-web-devicons'}
 
 Plugin.opts = {

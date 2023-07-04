@@ -1,5 +1,5 @@
 
-local Plugin = {'DanilaMihailov/beacon.nvim'}
+local Plugin = {'DanilaMihailov/beacon.nvim', event = "BufRead"}
 
 function Plugin.config()
 	vim.cmd([[highlight Beacon guibg=white ctermbg=15]])

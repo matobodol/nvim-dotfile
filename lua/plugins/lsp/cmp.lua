@@ -1,17 +1,17 @@
 -- Autocompletion
-local Plugin = {'hrsh7th/nvim-cmp'}
+local Plugin = {'hrsh7th/nvim-cmp',}
 local user = {autocomplete = true}
 
 Plugin.dependencies = {
   -- Sources
   {'hrsh7th/cmp-buffer'},
   {'hrsh7th/cmp-path'},
-  {'saadparwaiz1/cmp_luasnip'},
   {'hrsh7th/cmp-nvim-lsp'},
   {'hrsh7th/cmp-nvim-lua'},
 
   -- Snippets
   {'L3MON4D3/LuaSnip'},
+  {'saadparwaiz1/cmp_luasnip'},
 }
 
 Plugin.event = 'InsertEnter'
@@ -45,18 +45,20 @@ function Plugin.config()
     sources = {
       {name = 'path'},
       {name = 'nvim_lsp', keyword_length = 1},
-      {name = 'buffer', keyword_length = 3},
-      {name = 'luasnip', keyword_length = 2},
+      {name = 'luasnip', keyword_length = 1},
+      {name = 'buffer', keyword_length = 1},
     },
     window = {
       documentation = cmp.config.window.bordered(),
       completion = cmp.config.window.bordered(),
-      --~ documentation = {
-      --~ border = 'rounded',
-      --~ max_height = 15,
-      --~ max_width = 50,
-      --~ zindex = 50,
-      --~ }
+      --[[
+      documentation = {
+        border = 'rounded',
+        max_height = 15,
+        max_width = 50,
+        zindex = 50,
+      }
+       --]]
     },
     formatting = {
       fields = {'menu', 'abbr', 'kind'},
@@ -65,7 +67,7 @@ function Plugin.config()
           nvim_lsp = 'λ',
           luasnip = '⋗',
           buffer = 'Ω',
-          path = '🖫',
+          path = '/',
           nvim_lua = 'Π',
         }
 

@@ -7,11 +7,9 @@ Plugin.dependencies = {
   },
 }
 
-function Plugin.config()
-  local actions = require('telescope.actions')
-
-  -- Basic Configuration
-  require('telescope').setup {
+function Plugin.opts()
+  require("telescope").setup{
+    -- Basic Configuration
     defaults = {
       prompt_prefix = " > ",
       selection_caret = "> ",
@@ -38,10 +36,10 @@ function Plugin.config()
       mappings = {
         i = {
           --["<esc>"] = actions.close,
-          ["<M-n>"] = actions.cycle_history_next,
-          ["<M-p>"] = actions.cycle_history_prev,
-          ["<M-j>"] = actions.move_selection_next,
-          ["<M-k>"] = actions.move_selection_previous,
+          ["<M-n>"] = require('telescope.actions').cycle_history_next,
+          ["<M-p>"] = require('telescope.actions').cycle_history_prev,
+          ["<M-j>"] = require('telescope.actions').move_selection_next,
+          ["<M-k>"] = require('telescope.actions').move_selection_previous,
         },
       },
       file_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,

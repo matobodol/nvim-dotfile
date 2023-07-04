@@ -1,4 +1,4 @@
-local Plugin = {"simrat39/rust-tools.nvim"}
+local Plugin = {"simrat39/rust-tools.nvim", event = "Bufread"}
 Plugin.dependencies = {
   {'nvim-lua/plenary.nvim'},
   {'mfussenegger/nvim-dap'},

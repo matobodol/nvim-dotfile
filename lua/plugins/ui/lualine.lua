@@ -8,8 +8,8 @@ Plugin.opts = {
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
-      statusline = {},
       winbar = {},
+      statusline = { "dashboard", "alpha" },
     },
     ignore_focus = {},
     always_divide_middle = true,
@@ -22,11 +22,16 @@ Plugin.opts = {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_b = {'branch', 'diff'},
+    lualine_c = {'diagnostics'},
+    lualine_x = {},
+    --lualine_y = {'progress'},
+    lualine_y = {'location'},
+    lualine_z = {
+      function()
+        return " " .. os.date("%R")
+      end,
+    },
   },
   inactive_sections = {
     lualine_a = {},
@@ -34,7 +39,11 @@ Plugin.opts = {
     lualine_c = {'filename'},
     lualine_x = {'location'},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {
+      function()
+        return " " .. os.date("%R")
+      end,
+    },
   },
   tabline = {},
   winbar = {},
